@@ -1,7 +1,37 @@
 ---
+
 - hosts: target-machine
+
   tasks:
-          - name: Create folder
-            file: 
-            path: /sample/folder
-            state: directory
+
+    - name: Create folder
+
+      file:
+
+        path: /tmp/samplefolder
+
+        state: directory
+
+   
+
+    - name: Check if samplefolderusingshellmodule exists
+
+      stat:
+
+        path: /tmp/samplefolderusingshellmodule
+
+      register: output
+
+        
+
+    - name: Check output
+
+      debug:
+
+        var: output
+
+   
+
+    - name: Create folder using shell module
+
+      shell: "mkdir /tmp/samplefolderusingshellmodule"
